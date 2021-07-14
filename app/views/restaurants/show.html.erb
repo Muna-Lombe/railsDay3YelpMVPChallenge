@@ -11,14 +11,23 @@
 </p>
 
 <p>
-  <strong>Ratings:</strong>
-  <%= @restaurant.ratings %>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
 </p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @restaurant.image_url %>
+  <strong>Overall Rating:</strong>
+  <%= "⭐" * @restaurant.overall_rating %>
 </p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+
+
+
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %> |
@@ -30,7 +39,8 @@
 <h2>Reviews 👇</h2>
 <ul>
   <% @restaurant.reviews.each do |review| %>
-    <li><%= review.content %> - <%= link_to 'Edit', edit_review_path(review) %> - <%= link_to 'Delete', review_path(review), method: :delete, data: {confirm: "Delete?"} %></li>
+    <li><%= review.content %></li>
+    <p><%= review.rating %> - <%= link_to 'Edit', edit_review_path(review) %> - <%= link_to 'Delete', review_path(review), method: :delete, data: {confirm: "Delete?"} %></p>
   <% end -%>
 </ul>
 

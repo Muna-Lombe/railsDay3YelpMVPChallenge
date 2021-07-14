@@ -6,8 +6,12 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :address %>
-    <%= f.input :rating %>
-    <%= f.input :image_url %>
+    <%= f.input :phone_number %>
+    <%= f.input :category, collection:["chinese", "italian", "japanese", "french", "belgian"] %>
+    <%= f.input :chef_name %>
+    <%= f.input :chef_bio %>
+    
+
   </div>
 
   <div class="form-actions">

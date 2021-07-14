@@ -7,16 +7,16 @@ class RestaurantsController < ApplicationController
   end
 
   def top
-    @restaurants = Restaurant.where("ratings >= 4").limit(5)
+    @restaurants = Restaurant.where("overall_rating >= 3").limit(5)
   end
 
   # GET /restaurants/1
   def show
-    @restaurant
   end
 
   def chef
     # @restaurant -> already available because we added to the before action
+    
   end
 
   # GET /restaurants/new
@@ -34,6 +34,7 @@ class RestaurantsController < ApplicationController
 
     if @restaurant.save
       redirect_to @restaurant, notice: 'Restaurant was successfully created.'
+      # redirect_to restaurants_urlt, notice: 'Restaurant was successfully created.'
     else
       render :new
     end
@@ -62,6 +63,6 @@ class RestaurantsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :ratings, :image_url)
+    params.require(:restaurant).permit(:name, :address, :phone_number, :category, :chef_name, :chef_bio, :overall_rating)
   end
 end
