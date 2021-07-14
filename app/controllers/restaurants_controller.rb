@@ -12,6 +12,8 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1
   def show
+    r = @restaurant
+    r["overall_rating"] = ((r.reviews.map{|review| review.rating}.sum)/r.reviews.count).round()
   end
 
   def chef

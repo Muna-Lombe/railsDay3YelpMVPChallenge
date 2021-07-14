@@ -17,12 +17,22 @@ class ReviewsController < ApplicationController
       render :new
     end
   end
-  def update
+  def edit
+  end
 
+  def update
+    if @review.update(review_params)
+      @restaurant = @review.restaurant
+      redirect_to @restaurant
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    @review.destroy
+    @restaurant = @review.restaurant
+    redirect_to @restaurant
   end
 
   private
