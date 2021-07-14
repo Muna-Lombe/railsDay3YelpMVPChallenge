@@ -4,6 +4,9 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   def index
     @restaurants = Restaurant.all
+    @restaurants.each do |r|
+      r["overall_rating"] = ((r.reviews.map{|review| review.rating}.sum)/r.reviews.count).round()
+    end
   end
 
   def top
